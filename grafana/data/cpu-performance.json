@@ -34,7 +34,7 @@
             "query": {
               "params": [
                 "A",
-                "5m",
+                "1m",
                 "now"
               ]
             },
@@ -46,13 +46,17 @@
           }
         ],
         "executionErrorState": "alerting",
-        "for": "5m",
-        "frequency": "1m",
+        "for": "1m",
+        "frequency": "10",
         "handler": 1,
-        "message": "Seems that there is a problem on the CPU Utilization as it's currently for 5 minutes over 50%",
+        "message": "Seems that there is a problem on the CPU Utilization as it's currently for a minute over 50%",
         "name": "Overall CPU Utilization alert",
         "noDataState": "no_data",
-        "notifications": []
+        "notifications": [
+          {
+            "uid": "mail-channel-1"
+          }
+        ]
       },
       "aliasColors": {},
       "bars": false,
@@ -447,7 +451,7 @@
             "query": {
               "params": [
                 "A",
-                "5m",
+                "1m",
                 "now"
               ]
             },
@@ -459,13 +463,17 @@
           }
         ],
         "executionErrorState": "alerting",
-        "for": "5m",
-        "frequency": "1m",
+        "for": "1m",
+        "frequency": "10s",
         "handler": 1,
-        "message": "Load1 Average for the last 5 minutes is over 2.5, something might be wrong",
+        "message": "Load1 Average for the last minute is over 2.5, something might be wrong",
         "name": "CPU load 1 alert",
         "noDataState": "no_data",
-        "notifications": []
+        "notifications": [
+          {
+            "uid": "mail-channel-1"
+          }
+        ]
       },
       "aliasColors": {},
       "bars": false,
@@ -637,6 +645,46 @@
       "type": "gauge"
     },
     {
+      "alert": {
+        "alertRuleTags": {},
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                1.5
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "1m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "1m",
+        "frequency": "30s",
+        "handler": 1,
+        "message": "Load5 Average for the last minute is over 1.5, something might be wrong",
+        "name": "CPU Load 5 alert",
+        "noDataState": "no_data",
+        "notifications": [
+          {
+            "uid": "mail-channel-1"
+          }
+        ]
+      },
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -693,17 +741,8 @@
       ],
       "thresholds": [
         {
-          "$$hashKey": "object:492",
+          "$$hashKey": "object:1523",
           "colorMode": "critical",
-          "fill": true,
-          "line": true,
-          "op": "gt",
-          "value": 2,
-          "yaxis": "left"
-        },
-        {
-          "$$hashKey": "object:498",
-          "colorMode": "warning",
           "fill": true,
           "line": true,
           "op": "gt",
@@ -810,6 +849,46 @@
       "type": "gauge"
     },
     {
+      "alert": {
+        "alertRuleTags": {},
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                1
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "message": "Load15 Average for the last 5 minutes is over 1, something might be wrong",
+        "name": "CPU load 15 alert",
+        "noDataState": "no_data",
+        "notifications": [
+          {
+            "uid": "mail-channel-1"
+          }
+        ]
+      },
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -866,22 +945,11 @@
       ],
       "thresholds": [
         {
-          "$$hashKey": "object:701",
           "colorMode": "critical",
           "fill": true,
           "line": true,
           "op": "gt",
-          "value": 1.5,
-          "yaxis": "left"
-        },
-        {
-          "$$hashKey": "object:707",
-          "colorMode": "warning",
-          "fill": true,
-          "line": true,
-          "op": "gt",
-          "value": 1,
-          "yaxis": "left"
+          "value": 1
         }
       ],
       "timeFrom": null,
@@ -1041,5 +1109,5 @@
   "timezone": "",
   "title": "CPU Performance",
   "uid": "8NxFnK1Gk",
-  "version": 2
+  "version": 1
 }
