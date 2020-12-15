@@ -15,7 +15,6 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 1,
   "links": [],
   "panels": [
     {
@@ -376,7 +375,7 @@
       "pluginVersion": "7.3.5",
       "targets": [
         {
-          "expr": "topk(10, avg_over_time(memory_usage[$__interval]))",
+          "expr": "topk(10, memory_usage)",
           "instant": true,
           "interval": "",
           "legendFormat": "{{process}} {{pid}}",
@@ -385,7 +384,7 @@
       ],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Processes",
+      "title": "Current Memory Usage",
       "type": "bargauge"
     },
     {
@@ -502,6 +501,65 @@
         "align": false,
         "alignLevel": null
       }
+    },
+    {
+      "datasource": "Prometheus",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 16,
+        "w": 12,
+        "x": 12,
+        "y": 24
+      },
+      "id": 14,
+      "interval": "",
+      "maxDataPoints": 1,
+      "options": {
+        "displayMode": "lcd",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true
+      },
+      "pluginVersion": "7.3.5",
+      "targets": [
+        {
+          "expr": "topk(10, avg_over_time(memory_usage[$__interval]))",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "{{process}} {{pid}}",
+          "refId": "A"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Memory Usage Averaged Over Time",
+      "type": "bargauge"
     }
   ],
   "refresh": "10s",
@@ -519,5 +577,5 @@
   "timezone": "",
   "title": "Memory Performance",
   "uid": "yI6e101Gk",
-  "version": 2
+  "version": 1
 }
