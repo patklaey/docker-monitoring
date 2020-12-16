@@ -15,10 +15,45 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 2,
   "links": [],
   "panels": [
     {
+      "alert": {
+        "alertRuleTags": {},
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                75
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "message": "The Filesystem {{mountpoint}} is soon to be full",
+        "name": "Filesystem Use alert",
+        "noDataState": "no_data",
+        "notifications": []
+      },
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -99,22 +134,11 @@
       ],
       "thresholds": [
         {
-          "$$hashKey": "object:1500",
           "colorMode": "critical",
           "fill": true,
           "line": true,
           "op": "gt",
-          "value": 90,
-          "yaxis": "left"
-        },
-        {
-          "$$hashKey": "object:1506",
-          "colorMode": "warning",
-          "fill": true,
-          "line": true,
-          "op": "gt",
-          "value": 75,
-          "yaxis": "left"
+          "value": 75
         }
       ],
       "timeFrom": null,
@@ -617,7 +641,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Root Filesystem Use",
+      "title": "Data Filesystem Use",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -672,5 +696,5 @@
   "timezone": "",
   "title": "Disk Stats",
   "uid": "hOQFB01Mk",
-  "version": 2
+  "version": 1
 }

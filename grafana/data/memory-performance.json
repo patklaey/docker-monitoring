@@ -18,6 +18,42 @@
   "links": [],
   "panels": [
     {
+      "alert": {
+        "alertRuleTags": {},
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                75
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "message": "Memory usage is over 75%, something might be fishy...",
+        "name": "Memory usage in % over time alert",
+        "noDataState": "no_data",
+        "notifications": []
+      },
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -91,22 +127,11 @@
       ],
       "thresholds": [
         {
-          "$$hashKey": "object:1073",
-          "colorMode": "warning",
-          "fill": true,
-          "line": true,
-          "op": "gt",
-          "value": 70,
-          "yaxis": "left"
-        },
-        {
-          "$$hashKey": "object:1079",
           "colorMode": "critical",
           "fill": true,
           "line": true,
           "op": "gt",
-          "value": 85,
-          "yaxis": "left"
+          "value": 75
         }
       ],
       "timeFrom": null,
