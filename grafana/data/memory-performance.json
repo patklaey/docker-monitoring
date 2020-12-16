@@ -533,7 +533,6 @@
       },
       "id": 14,
       "interval": "",
-      "maxDataPoints": 1,
       "options": {
         "displayMode": "lcd",
         "orientation": "horizontal",
@@ -549,7 +548,7 @@
       "pluginVersion": "7.3.5",
       "targets": [
         {
-          "expr": "topk(10, avg_over_time(memory_usage[$__interval]))",
+          "expr": "topk(10, sum_over_time( memory_usage[$__range:1m]) / ($__range_s / 60))",
           "instant": true,
           "interval": "",
           "legendFormat": "{{process}} {{pid}}",
