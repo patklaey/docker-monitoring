@@ -34,6 +34,9 @@ services:
       - GF_SMTP_FROM_ADDRESS=${MAIL_FROM_ADDRESS}
       - GF_SMTP_FROM_NAME=${MAIL_FROM_NAME}
       - GF_SMTP_STARTTLS_POLICY=${MAIL_STARTTLS_POLICY}
+      - GF_RENDERING_SERVER_URL=http://renderer:8081/render
+      - GF_RENDERING_CALLBACK_URL=http://grafana:3000/
+      - GF_LOG_FILTERS=rendering:debug  
 
   pushgateway:
     image: prom/pushgateway:v1.3.0
@@ -41,3 +44,12 @@ services:
     restart: always
     ports:
       - 9091:9091
+
+  renderer:
+    container_name: grafana-image-renderer
+    restart: always
+    image: patklaey/grafana-image-renderer:2.0.0
+    ports:
+      - 8081:8081
+    environment:
+      - ENABLE_METRICS=true
