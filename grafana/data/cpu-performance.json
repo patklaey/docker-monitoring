@@ -372,7 +372,6 @@
       },
       "id": 21,
       "interval": "",
-      "maxDataPoints": 1,
       "options": {
         "displayMode": "lcd",
         "orientation": "horizontal",
@@ -388,7 +387,7 @@
       "pluginVersion": "7.3.5",
       "targets": [
         {
-          "expr": "topk(10, avg_over_time(cpu_usage[$__interval]))",
+          "expr": "topk(10, sum_over_time( cpu_usage[$__range:1m]) / ($__range_s / 60))",
           "instant": true,
           "interval": "",
           "legendFormat": "{{process}} {{pid}}",
@@ -744,7 +743,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "topk(5,cpu_usage)",
+          "expr": "topk(5,cpu_usage > 2)",
           "instant": false,
           "interval": "",
           "legendFormat": "{{process}}",
