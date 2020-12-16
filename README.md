@@ -20,3 +20,10 @@ nohup ./node_exporter &
 ```
 And make sure it's being started on every system boot:
 
+#### Image renderer
+To be able to use image renderer on arm architecture, you have to use the build from [Legion2](https://github.com/Legion2/grafana-image-renderer/blob/master/Dockerfile) and run the following command before docker-compose up: 
+```bash
+docker build -t patklaey/grafana-image-renderer:2.0.0 https://github.com/Legion2/grafana-image-renderer.git
+```
+
+###
