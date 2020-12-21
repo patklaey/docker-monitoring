@@ -587,7 +587,7 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
+      "timeFrom": "24h",
       "timeShift": null,
       "title": "Backup FS Available Space",
       "type": "bargauge"
