@@ -41,7 +41,7 @@ services:
       - GF_SERVER_ROOT_URL=${SERVER_PROTOCOL}://${SERVER_DOMAIN}
 
   pushgateway:
-    image: prom/pushgateway:v1.3.0
+    image: prom/pushgateway:v1.3.1
     container_name: pushgateway
     restart: always
     ports:
