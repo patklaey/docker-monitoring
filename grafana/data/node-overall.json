@@ -231,6 +231,7 @@
       "targets": [
         {
           "expr": "100-((100/node_memory_MemTotal_bytes)*node_memory_MemAvailable_bytes)",
+          "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -293,7 +294,7 @@
       "targets": [
         {
           "expr": "100 - (avg by (instance) (irate(node_cpu_seconds_total{mode=\"idle\"}[1m])) * 100)",
-          "instant": false,
+          "instant": true,
           "interval": "",
           "legendFormat": "",
           "refId": "A"
@@ -529,7 +530,7 @@
       "type": "gauge"
     }
   ],
-  "refresh": "10s",
+  "refresh": "30s",
   "schemaVersion": 26,
   "style": "dark",
   "tags": [],
@@ -537,12 +538,12 @@
     "list": []
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-7d",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "Node Overall",
   "uid": "Z8bCoDJMz",
-  "version": 1
+  "version": 2
 }
