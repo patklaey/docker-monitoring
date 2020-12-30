@@ -24,7 +24,7 @@
           {
             "evaluator": {
               "params": [
-                75
+                85
               ],
               "type": "gt"
             },
@@ -107,7 +107,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.6",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -131,7 +131,7 @@
           "fill": true,
           "line": true,
           "op": "gt",
-          "value": 75
+          "value": 85
         }
       ],
       "timeFrom": null,
@@ -224,7 +224,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.6",
       "targets": [
         {
           "expr": "100-((100/node_memory_MemTotal_bytes)*node_memory_MemAvailable_bytes)",
@@ -292,7 +292,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.6",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -397,7 +397,7 @@
         },
         "showUnfilled": true
       },
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.6",
       "targets": [
         {
           "expr": "topk(10, memory_usage)",
@@ -466,7 +466,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.6",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -570,7 +570,7 @@
         },
         "showUnfilled": true
       },
-      "pluginVersion": "7.3.5",
+      "pluginVersion": "7.3.6",
       "targets": [
         {
           "expr": "topk(10, sum_over_time( memory_usage[$__range:1m]) / ($__range_s / 60))",
