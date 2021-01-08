@@ -565,6 +565,7 @@
       },
       "hideTimeOverride": true,
       "id": 12,
+      "interval": "",
       "options": {
         "displayMode": "lcd",
         "orientation": "auto",
