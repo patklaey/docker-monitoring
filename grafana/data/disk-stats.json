@@ -100,6 +100,7 @@
       "hiddenSeries": false,
       "hideTimeOverride": true,
       "id": 5,
+      "interval": "",
       "legend": {
         "avg": false,
         "current": false,
@@ -111,6 +112,7 @@
       },
       "lines": true,
       "linewidth": 1,
+      "maxDataPoints": 2000,
       "nullPointMode": "null",
       "options": {
         "alertThreshold": true
@@ -566,6 +568,7 @@
       "hideTimeOverride": true,
       "id": 12,
       "interval": "",
+      "maxDataPoints": 2000,
       "options": {
         "displayMode": "lcd",
         "orientation": "auto",
@@ -893,7 +896,7 @@
     "list": []
   },
   "time": {
-    "from": "now-24h",
+    "from": "now-2d",
     "to": "now"
   },
   "timepicker": {},
