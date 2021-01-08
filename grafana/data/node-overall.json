@@ -24,7 +24,7 @@
           {
             "evaluator": {
               "params": [
-                50
+                75
               ],
               "type": "gt"
             },
@@ -34,7 +34,7 @@
             "query": {
               "params": [
                 "A",
-                "1m",
+                "5m",
                 "now"
               ]
             },
@@ -46,28 +46,28 @@
           }
         ],
         "executionErrorState": "alerting",
-        "for": "1m",
-        "frequency": "10",
+        "for": "5m",
+        "frequency": "1m",
         "handler": 1,
-        "message": "Seems that there is a problem on the CPU Utilization as it's currently for a minute over 50%",
-        "name": "Overall CPU Utilization alert",
+        "message": "The Filesystem {{mountpoint}} is soon to be full",
+        "name": "Filesystem Use alert",
         "noDataState": "no_data",
-        "notifications": [
-          {
-            "uid": "mail-channel-1"
-          }
-        ]
+        "notifications": []
       },
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
       "datasource": "Prometheus",
-      "description": "",
       "fieldConfig": {
         "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
           "custom": {},
           "mappings": [],
+          "max": 100,
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -76,15 +76,20 @@
                 "value": null
               },
               {
+                "color": "#EAB839",
+                "value": 75
+              },
+              {
                 "color": "red",
-                "value": 80
+                "value": 90
               }
             ]
-          }
+          },
+          "unit": "percent"
         },
         "overrides": []
       },
-      "fill": 1,
+      "fill": 0,
       "fillGradient": 0,
       "gridPos": {
         "h": 8,
@@ -93,18 +98,21 @@
         "y": 0
       },
       "hiddenSeries": false,
-      "id": 14,
+      "hideTimeOverride": true,
+      "id": 19,
+      "interval": "",
       "legend": {
-        "avg": true,
+        "avg": false,
         "current": false,
         "max": true,
-        "min": false,
+        "min": true,
         "show": true,
         "total": false,
         "values": true
       },
       "lines": true,
       "linewidth": 1,
+      "maxDataPoints": 2000,
       "nullPointMode": "null",
       "options": {
         "alertThreshold": true
@@ -120,11 +128,9 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "100 - (avg by (instance) (irate(node_cpu_seconds_total{mode=\"idle\"}[1m])) * 100)",
-          "format": "time_series",
+          "expr": "100-((100/node_filesystem_size_bytes{mountpoint=~\"/|/data|/mnt/backup\",})*node_filesystem_avail_bytes)",
           "interval": "",
-          "intervalFactor": 1,
-          "legendFormat": "CPU Utilization %",
+          "legendFormat": "{{mountpoint}}",
           "refId": "A"
         }
       ],
@@ -134,13 +140,13 @@
           "fill": true,
           "line": true,
           "op": "gt",
-          "value": 50
+          "value": 75
         }
       ],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Overall CPU Utilization",
+      "title": "Filesystem Use",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -156,8 +162,8 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:2821",
-          "format": "short",
+          "$$hashKey": "object:383",
+          "format": "percent",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -165,7 +171,7 @@
           "show": true
         },
         {
-          "$$hashKey": "object:2822",
+          "$$hashKey": "object:384",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -306,42 +312,6 @@
       "type": "gauge"
     },
     {
-      "alert": {
-        "alertRuleTags": {},
-        "conditions": [
-          {
-            "evaluator": {
-              "params": [
-                85
-              ],
-              "type": "gt"
-            },
-            "operator": {
-              "type": "and"
-            },
-            "query": {
-              "params": [
-                "A",
-                "5m",
-                "now"
-              ]
-            },
-            "reducer": {
-              "params": [],
-              "type": "avg"
-            },
-            "type": "query"
-          }
-        ],
-        "executionErrorState": "alerting",
-        "for": "5m",
-        "frequency": "1m",
-        "handler": 1,
-        "message": "Memory usage is over 75%, something might be fishy...",
-        "name": "Memory usage in % over time alert",
-        "noDataState": "no_data",
-        "notifications": []
-      },
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -364,8 +334,7 @@
                 "value": 80
               }
             ]
-          },
-          "unit": "percent"
+          }
         },
         "overrides": []
       },
@@ -378,7 +347,7 @@
         "y": 8
       },
       "hiddenSeries": false,
-      "id": 17,
+      "id": 14,
       "legend": {
         "avg": true,
         "current": false,
@@ -405,27 +374,19 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "100 - (100/node_memory_MemTotal_bytes) * node_memory_MemAvailable_bytes",
+          "expr": "100 - (avg by (instance) (irate(node_cpu_seconds_total{mode=\"idle\"}[1m])) * 100)",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 1,
-          "legendFormat": "Used Memory",
+          "legendFormat": "CPU Utilization %",
           "refId": "A"
         }
       ],
-      "thresholds": [
-        {
-          "colorMode": "critical",
-          "fill": true,
-          "line": true,
-          "op": "gt",
-          "value": 85
-        }
-      ],
+      "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Memory usage in % over time",
+      "title": "Overall CPU Utilization",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -441,8 +402,8 @@
       },
       "yaxes": [
         {
-          "$$hashKey": "object:100",
-          "format": "percent",
+          "$$hashKey": "object:2821",
+          "format": "short",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -450,7 +411,7 @@
           "show": true
         },
         {
-          "$$hashKey": "object:101",
+          "$$hashKey": "object:2822",
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -528,6 +489,121 @@
       "timeShift": null,
       "title": "Filesystem Use",
       "type": "gauge"
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Prometheus",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {},
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 16
+      },
+      "hiddenSeries": false,
+      "id": 17,
+      "legend": {
+        "avg": true,
+        "current": false,
+        "max": true,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.3.6",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "100 - (100/node_memory_MemTotal_bytes) * node_memory_MemAvailable_bytes",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "Used Memory",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Memory usage in % over time",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "$$hashKey": "object:100",
+          "format": "percent",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "$$hashKey": "object:101",
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
     }
   ],
   "refresh": "30s",
