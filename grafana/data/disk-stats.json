@@ -225,6 +225,8 @@
       },
       "hideTimeOverride": true,
       "id": 4,
+      "interval": "",
+      "maxDataPoints": 4000,
       "options": {
         "reduceOptions": {
           "calcs": [
@@ -240,6 +242,7 @@
       "targets": [
         {
           "expr": "100-((100/node_filesystem_size_bytes{mountpoint=~\"/|/data|/mnt/backup\",})*node_filesystem_avail_bytes)",
+          "instant": false,
           "interval": "",
           "legendFormat": "{{mountpoint}}",
           "refId": "A"
