@@ -67,19 +67,9 @@
       "fieldConfig": {
         "defaults": {
           "custom": {},
-          "mappings": [],
           "thresholds": {
             "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
+            "steps": []
           }
         },
         "overrides": []
@@ -110,7 +100,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "7.4.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -134,7 +124,8 @@
           "fill": true,
           "line": true,
           "op": "gt",
-          "value": 50
+          "value": 50,
+          "visible": true
         }
       ],
       "timeFrom": null,
@@ -223,9 +214,10 @@
           "fields": "",
           "values": false
         },
-        "showUnfilled": true
+        "showUnfilled": true,
+        "text": {}
       },
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "7.4.1",
       "targets": [
         {
           "expr": "topk(10, cpu_usage)",
@@ -279,7 +271,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "7.4.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -382,9 +374,10 @@
           "fields": "",
           "values": false
         },
-        "showUnfilled": true
+        "showUnfilled": true,
+        "text": {}
       },
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "7.4.1",
       "targets": [
         {
           "expr": "topk(10, sum_over_time( cpu_usage[$__range:1m]) / ($__range_s / 60))",
@@ -441,7 +434,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "7.4.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -539,7 +532,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "7.4.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -603,10 +596,10 @@
       "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
-          "custom": {
-            "align": null,
-            "filterable": false
+          "color": {
+            "mode": "thresholds"
           },
+          "custom": {},
           "mappings": [],
           "max": 1896000000,
           "min": 0,
@@ -623,7 +616,7 @@
               }
             ]
           },
-          "unit": "none"
+          "unit": "hertz"
         },
         "overrides": []
       },
@@ -644,9 +637,10 @@
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true
+        "showThresholdMarkers": true,
+        "text": {}
       },
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "7.4.1",
       "targets": [
         {
           "expr": "node_cpu_scaling_frequency_hertz{cpu=~\"0|1\"}",
@@ -739,7 +733,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "7.4.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -761,7 +755,8 @@
           "fill": true,
           "line": true,
           "op": "gt",
-          "value": 1.5
+          "value": 1.5,
+          "visible": true
         }
       ],
       "timeFrom": null,
@@ -810,6 +805,9 @@
       "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
           "custom": {},
           "mappings": [],
           "min": 0,
@@ -825,7 +823,8 @@
                 "value": 1500000000
               }
             ]
-          }
+          },
+          "unit": "hertz"
         },
         "overrides": []
       },
@@ -845,9 +844,10 @@
           "values": false
         },
         "showThresholdLabels": false,
-        "showThresholdMarkers": true
+        "showThresholdMarkers": true,
+        "text": {}
       },
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "7.4.1",
       "targets": [
         {
           "expr": "node_cpu_frequency_hertz{cpu!~\"0|1\"}",
@@ -901,7 +901,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.6",
+      "pluginVersion": "7.4.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -962,7 +962,7 @@
     }
   ],
   "refresh": "10s",
-  "schemaVersion": 26,
+  "schemaVersion": 27,
   "style": "dark",
   "tags": [],
   "templating": {
