@@ -3,7 +3,10 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -13,9 +16,10 @@
     ]
   },
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
   "links": [],
+  "liveNow": false,
   "panels": [
     {
       "alert": {
@@ -58,15 +62,12 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
-          "color": {},
-          "custom": {},
-          "thresholds": {
-            "mode": "absolute",
-            "steps": []
-          },
           "unit": "percent"
         },
         "overrides": []
@@ -100,7 +101,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.3",
+      "pluginVersion": "10.1.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -110,6 +111,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "100-((100/node_filesystem_size_bytes{mountpoint=~\"/|/data|/mnt/backup\",})*node_filesystem_avail_bytes)",
           "interval": "",
           "legendFormat": "{{mountpoint}}",
@@ -126,9 +131,7 @@
           "visible": true
         }
       ],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Filesystem Use",
       "tooltip": {
         "shared": true,
@@ -137,9 +140,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -147,35 +148,30 @@
         {
           "$$hashKey": "object:383",
           "format": "percent",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:384",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
-          "custom": {},
           "mappings": [],
           "max": 100,
           "min": 0,
@@ -211,6 +207,7 @@
       "interval": "",
       "maxDataPoints": 4000,
       "options": {
+        "orientation": "auto",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -222,9 +219,13 @@
         "showThresholdMarkers": true,
         "text": {}
       },
-      "pluginVersion": "7.4.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "100-((100/node_filesystem_size_bytes{mountpoint=~\"/|/data|/mnt/backup\",})*node_filesystem_avail_bytes)",
           "instant": false,
           "interval": "",
@@ -232,8 +233,6 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Current Filesystem Use",
       "type": "gauge"
     },
@@ -242,15 +241,12 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
-          "color": {},
-          "custom": {},
-          "thresholds": {
-            "mode": "absolute",
-            "steps": []
-          },
           "unit": "percent"
         },
         "overrides": []
@@ -282,7 +278,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.3",
+      "pluginVersion": "10.1.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -292,6 +288,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "100-((100/node_filesystem_size_bytes{mountpoint=~\"/\",})*node_filesystem_avail_bytes)",
           "interval": "",
           "legendFormat": "root fs",
@@ -318,9 +318,7 @@
           "yaxis": "left"
         }
       ],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Root Filesystem Use",
       "tooltip": {
         "shared": true,
@@ -329,9 +327,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -339,35 +335,30 @@
         {
           "$$hashKey": "object:475",
           "format": "percent",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:476",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
-          "custom": {},
           "mappings": [],
           "max": 31138512896,
           "min": 0,
@@ -402,6 +393,8 @@
       "id": 9,
       "options": {
         "displayMode": "lcd",
+        "minVizHeight": 10,
+        "minVizWidth": 0,
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -411,11 +404,16 @@
           "values": false
         },
         "showUnfilled": true,
-        "text": {}
+        "text": {},
+        "valueMode": "color"
       },
-      "pluginVersion": "7.4.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "node_filesystem_avail_bytes{mountpoint=~\"/\"}",
           "instant": false,
           "interval": "",
@@ -423,19 +421,19 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Root FS Available Space",
       "type": "bargauge"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
-          "custom": {},
           "decimals": 1,
           "mappings": [],
           "max": 2968681394995,
@@ -471,6 +469,8 @@
       "id": 11,
       "options": {
         "displayMode": "lcd",
+        "minVizHeight": 10,
+        "minVizWidth": 0,
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -480,11 +480,16 @@
           "values": false
         },
         "showUnfilled": true,
-        "text": {}
+        "text": {},
+        "valueMode": "color"
       },
-      "pluginVersion": "7.4.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "node_filesystem_avail_bytes{mountpoint=~\"/data\"}",
           "instant": false,
           "interval": "",
@@ -492,19 +497,19 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Data FS Available Space",
       "type": "bargauge"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
-          "custom": {},
           "decimals": 1,
           "mappings": [],
           "max": 1979120929996,
@@ -542,6 +547,8 @@
       "maxDataPoints": 2000,
       "options": {
         "displayMode": "lcd",
+        "minVizHeight": 10,
+        "minVizWidth": 0,
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -551,11 +558,16 @@
           "values": false
         },
         "showUnfilled": true,
-        "text": {}
+        "text": {},
+        "valueMode": "color"
       },
-      "pluginVersion": "7.4.3",
+      "pluginVersion": "10.1.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "node_filesystem_avail_bytes{mountpoint=~\"/mnt/backup\"}",
           "instant": false,
           "interval": "",
@@ -564,7 +576,6 @@
         }
       ],
       "timeFrom": "24h",
-      "timeShift": null,
       "title": "Backup FS Available Space",
       "type": "bargauge"
     },
@@ -573,15 +584,12 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "fieldConfig": {
         "defaults": {
-          "color": {},
-          "custom": {},
-          "thresholds": {
-            "mode": "absolute",
-            "steps": []
-          },
           "unit": "percent"
         },
         "overrides": []
@@ -613,7 +621,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.3",
+      "pluginVersion": "10.1.5",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -623,6 +631,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "100-((100/node_filesystem_size_bytes{mountpoint=~\"/data\",})*node_filesystem_avail_bytes)",
           "interval": "",
           "legendFormat": "data fs",
@@ -649,9 +661,7 @@
           "yaxis": "left"
         }
       ],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Data Filesystem Use",
       "tooltip": {
         "shared": true,
@@ -660,9 +670,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -670,25 +678,18 @@
         {
           "$$hashKey": "object:568",
           "format": "percent",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:569",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -696,16 +697,13 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
       "decimals": 2,
       "fieldConfig": {
         "defaults": {
-          "color": {},
-          "custom": {},
-          "thresholds": {
-            "mode": "absolute",
-            "steps": []
-          },
           "unit": "percent"
         },
         "overrides": []
@@ -741,7 +739,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.3",
+      "pluginVersion": "10.1.5",
       "pointradius": 2,
       "points": true,
       "renderer": "flot",
@@ -751,6 +749,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
           "expr": "100-((100/node_filesystem_size_bytes{mountpoint=~\"/mnt/backup\",})*node_filesystem_avail_bytes)",
           "interval": "",
           "legendFormat": "backup fs",
@@ -777,9 +779,7 @@
           "yaxis": "left"
         }
       ],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Bcakup Filesystem Use",
       "tooltip": {
         "shared": true,
@@ -788,9 +788,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -799,30 +797,23 @@
           "$$hashKey": "object:2047",
           "decimals": 2,
           "format": "percent",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:2048",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     }
   ],
   "refresh": "5m",
-  "schemaVersion": 27,
+  "schemaVersion": 38,
   "style": "dark",
   "tags": [],
   "templating": {
@@ -836,5 +827,6 @@
   "timezone": "",
   "title": "Disk Stats",
   "uid": "hOQFB01Mk",
-  "version": 1
+  "version": 1,
+  "weekStart": ""
 }
