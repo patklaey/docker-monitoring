@@ -1,0 +1,143 @@
+apiVersion: 1
+groups:
+    - orgId: 1
+      name: compute-evaluation
+      folder: compute-rules
+      interval: 1m
+      rules:
+        - uid: adka59lcbrbwgf
+          title: Overall CPU Utilization
+          condition: CPU Over 50
+          data:
+            - refId: CPU Use
+              relativeTimeRange:
+                from: 3600
+                to: 0
+              datasourceUid: PBFA97CFB590B2093
+              model:
+                datasource:
+                    type: prometheus
+                    uid: PBFA97CFB590B2093
+                expr: 100 - (avg by (instance) (irate(node_cpu_seconds_total{mode="idle"}[1m])) * 100)
+                format: time_series
+                interval: ""
+                intervalFactor: 1
+                intervalMs: 15000
+                legendFormat: CPU Utilization %
+                maxDataPoints: 43200
+                refId: CPU Use
+            - refId: CPU Usage
+              datasourceUid: __expr__
+              model:
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: CPU Use
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: CPU Usage
+                type: reduce
+            - refId: CPU Over 50
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 50
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - CPU Over 50
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: CPU Usage
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: CPU Over 50
+                type: threshold
+          dashboardUid: Z8bCoDJMz
+          panelId: 14
+          noDataState: NoData
+          execErrState: Error
+          for: 5m
+          annotations:
+            __dashboardUid__: Z8bCoDJMz
+            __panelId__: "14"
+          labels: {}
+          isPaused: false
+        - uid: edka5o0noay9se
+          title: Memory usage in % over time
+          condition: Memory Over 75
+          data:
+            - refId: Memory Use
+              relativeTimeRange:
+                from: 3600
+                to: 0
+              datasourceUid: PBFA97CFB590B2093
+              model:
+                datasource:
+                    type: prometheus
+                    uid: PBFA97CFB590B2093
+                expr: 100 - (100/node_memory_MemTotal_bytes) * node_memory_MemAvailable_bytes
+                format: time_series
+                interval: ""
+                intervalFactor: 1
+                intervalMs: 15000
+                legendFormat: Used Memory
+                maxDataPoints: 43200
+                refId: Memory Use
+            - refId: Memory Usage
+              datasourceUid: __expr__
+              model:
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: Memory Use
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: Memory Usage
+                type: reduce
+            - refId: Memory Over 75
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 75
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - Memory Over 75
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: Memory Usage
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: Memory Over 75
+                type: threshold
+          dashboardUid: Z8bCoDJMz
+          panelId: 17
+          noDataState: NoData
+          execErrState: Error
+          for: 1m
+          annotations:
+            __dashboardUid__: Z8bCoDJMz
+            __panelId__: "17"
+          labels: {}
+          isPaused: false

@@ -1,17 +1,17 @@
 apiVersion: 1
 groups:
     - orgId: 1
-      name: disk-evaluation
-      folder: disk-rules
-      interval: 30m
+      name: storage-evaluation
+      folder: storage-rules
+      interval: 5m
       rules:
-        - uid: bfd7351a-ddcf-4278-a8a9-7137d88a8525
+        - uid: edka69hppj2f4a
           title: Filesystem Use
           condition: C
           data:
             - refId: A
               relativeTimeRange:
-                from: 172800
+                from: 3600
                 to: 0
               datasourceUid: PBFA97CFB590B2093
               model:
@@ -20,7 +20,7 @@ groups:
                     uid: PBFA97CFB590B2093
                 expr: 100-((100/node_filesystem_size_bytes{mountpoint=~"/|/data|/mnt/backup",})*node_filesystem_avail_bytes)
                 interval: ""
-                intervalMs: 60000
+                intervalMs: 2000
                 legendFormat: '{{mountpoint}}'
                 maxDataPoints: 2000
                 refId: A
@@ -74,12 +74,14 @@ groups:
                 maxDataPoints: 43200
                 refId: C
                 type: threshold
-          dashboardUid: hOQFB01Mk
-          panelId: 5
+          dashboardUid: Z8bCoDJMz
+          panelId: 19
           noDataState: NoData
           execErrState: Error
           for: 1h
           annotations:
-            __dashboardUid__: hOQFB01Mk
-            __panelId__: "5"
+            __dashboardUid__: Z8bCoDJMz
+            __panelId__: "19"
+          labels: {}
           isPaused: false
+

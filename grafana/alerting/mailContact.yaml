@@ -1,0 +1,11 @@
+apiVersion: 1
+contactPoints:
+    - orgId: 1
+      name: Mail-Channel
+      receivers:
+        - uid: ece7964b-3a41-4e51-9271-272f0f79eb3f
+          type: email
+          settings:
+            addresses: pat@247.ch
+            singleEmail: false
+          disableResolveMessage: false
