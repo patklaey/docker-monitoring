@@ -6,3 +6,7 @@ scrape_configs:
     scrape_interval: 30s
     static_configs:
       - targets: ['192.168.1.137:9100','192.168.1.137:9091']
+  - job_name: knx-monitor
+    scrape_interval: 2s
+    static_configs:
+      - targets: ['192.168.1.119:8080']
