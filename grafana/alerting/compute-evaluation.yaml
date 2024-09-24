@@ -75,7 +75,7 @@ groups:
           isPaused: false
         - uid: edka5o0noay9se
           title: Memory usage in % over time
-          condition: Memory Over 75
+          condition: Memory Over 85
           data:
             - refId: Memory Use
               relativeTimeRange:
@@ -106,19 +106,19 @@ groups:
                 reducer: last
                 refId: Memory Usage
                 type: reduce
-            - refId: Memory Over 75
+            - refId: Memory Over 85
               datasourceUid: __expr__
               model:
                 conditions:
                     - evaluator:
                         params:
-                            - 75
+                            - 85
                         type: gt
                       operator:
                         type: and
                       query:
                         params:
-                            - Memory Over 75
+                            - Memory Over 85
                       reducer:
                         params: []
                         type: last
@@ -129,7 +129,7 @@ groups:
                 expression: Memory Usage
                 intervalMs: 1000
                 maxDataPoints: 43200
-                refId: Memory Over 75
+                refId: Memory Over 85
                 type: threshold
           dashboardUid: Z8bCoDJMz
           panelId: 17
