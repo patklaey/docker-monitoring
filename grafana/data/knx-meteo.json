@@ -18,7 +18,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 5,
   "links": [],
   "panels": [
     {
@@ -450,7 +449,7 @@
           "showLegend": true
         },
         "tooltip": {
-          "mode": "single",
+          "mode": "multi",
           "sort": "none"
         }
       },
@@ -632,7 +631,7 @@
           "showLegend": true
         },
         "tooltip": {
-          "mode": "single",
+          "mode": "multi",
           "sort": "none"
         }
       },
@@ -655,6 +654,102 @@
         }
       ],
       "title": "Temp Indoor/Outdoor",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "humidity"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 20
+      },
+      "id": 14,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
+          "expr": "knx_room_humidity_percentage",
+          "instant": false,
+          "legendFormat": "{{roomName}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Humidity",
       "type": "timeseries"
     },
     {
@@ -733,7 +828,7 @@
       },
       "gridPos": {
         "h": 13,
-        "w": 23,
+        "w": 24,
         "x": 0,
         "y": 30
       },
@@ -747,7 +842,7 @@
           "showLegend": true
         },
         "tooltip": {
-          "mode": "single",
+          "mode": "multi",
           "sort": "none"
         }
       },
@@ -873,13 +968,13 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "max_over_time(knx_weather_windspeed_kmh[4h])",
+          "expr": "max_over_time(knx_weather_windspeed_kmh[8h])",
           "format": "time_series",
           "hide": false,
           "instant": true,
-          "legendFormat": "4h",
+          "legendFormat": "8h",
           "range": false,
-          "refId": "4h"
+          "refId": "8h"
         },
         {
           "datasource": {
@@ -895,21 +990,6 @@
           "legendFormat": "24h",
           "range": false,
           "refId": "24h"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "max_over_time(knx_weather_windspeed_kmh[2d])",
-          "format": "time_series",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "2d",
-          "range": false,
-          "refId": "2d"
         },
         {
           "datasource": {
@@ -940,6 +1020,21 @@
           "legendFormat": "4w",
           "range": false,
           "refId": "4w"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "max_over_time(knx_weather_windspeed_kmh[26w])",
+          "format": "time_series",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "6m",
+          "range": false,
+          "refId": "6m"
         },
         {
           "datasource": {
@@ -1003,7 +1098,7 @@
         "maxVizHeight": 300,
         "minVizHeight": 16,
         "minVizWidth": 8,
-        "namePlacement": "auto",
+        "namePlacement": "top",
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
@@ -1058,13 +1153,13 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "avg_over_time(knx_weather_windspeed_kmh[4h])",
+          "expr": "avg_over_time(knx_weather_windspeed_kmh[8h])",
           "format": "time_series",
           "hide": false,
           "instant": true,
-          "legendFormat": "4h",
+          "legendFormat": "8h",
           "range": false,
-          "refId": "4h"
+          "refId": "8h"
         },
         {
           "datasource": {
@@ -1080,21 +1175,6 @@
           "legendFormat": "24h",
           "range": false,
           "refId": "24h"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "PBFA97CFB590B2093"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "avg_over_time(knx_weather_windspeed_kmh[2d])",
-          "format": "time_series",
-          "hide": false,
-          "instant": true,
-          "legendFormat": "2d",
-          "range": false,
-          "refId": "2d"
         },
         {
           "datasource": {
@@ -1133,6 +1213,21 @@
           },
           "editorMode": "code",
           "exemplar": false,
+          "expr": "avg_over_time(knx_weather_windspeed_kmh[26w])",
+          "format": "time_series",
+          "hide": false,
+          "instant": true,
+          "legendFormat": "6m",
+          "range": false,
+          "refId": "6m"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
+          "exemplar": false,
           "expr": "avg_over_time(knx_weather_windspeed_kmh[1y])",
           "format": "time_series",
           "hide": false,
@@ -1153,7 +1248,7 @@
     "list": []
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-12h",
     "to": "now"
   },
   "timepicker": {},

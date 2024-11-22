@@ -1,0 +1,96 @@
+apiVersion: 1
+groups:
+    - orgId: 1
+      name: meteo evaluation
+      folder: meteo rules
+      interval: 30m
+      rules:
+        - uid: ce4pa338fzh1cc
+          title: Humidity
+          condition: C
+          data:
+            - refId: humidity metric
+              relativeTimeRange:
+                from: 43200
+                to: 0
+              datasourceUid: PBFA97CFB590B2093
+              model:
+                datasource:
+                    type: prometheus
+                    uid: PBFA97CFB590B2093
+                editorMode: code
+                expr: knx_room_humidity_percentage
+                instant: false
+                interval: ""
+                intervalMs: 15000
+                legendFormat: '{{roomName}}'
+                maxDataPoints: 43200
+                range: true
+                refId: humidity metric
+            - refId: humidity value
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params: []
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - B
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: humidity metric
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: humidity value
+                type: reduce
+            - refId: C
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 40
+                        type: lt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - C
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: humidity value
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: C
+                type: threshold
+          dashboardUid: cdlsigpuwahogc
+          panelId: 14
+          noDataState: NoData
+          execErrState: Error
+          for: 8h
+          annotations:
+            __dashboardUid__: cdlsigpuwahogc
+            __panelId__: "14"
+          labels: {}
+          isPaused: false
+
