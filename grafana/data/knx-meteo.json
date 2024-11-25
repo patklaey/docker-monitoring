@@ -884,7 +884,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green"
+                "color": "green",
+                "value": null
               },
               {
                 "color": "#EAB839",
@@ -902,7 +903,7 @@
       },
       "gridPos": {
         "h": 13,
-        "w": 11,
+        "w": 12,
         "x": 0,
         "y": 43
       },
@@ -1073,7 +1074,8 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "blue"
+                "color": "blue",
+                "value": null
               },
               {
                 "color": "red",
@@ -1088,7 +1090,7 @@
       "gridPos": {
         "h": 13,
         "w": 12,
-        "x": 11,
+        "x": 12,
         "y": 43
       },
       "id": 13,
