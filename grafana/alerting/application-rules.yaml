@@ -1,0 +1,96 @@
+apiVersion: 1
+groups:
+    - orgId: 1
+      name: smart-home-extension
+      folder: application-rules
+      interval: 1m
+      rules:
+        - uid: cepy57rqmyfb4e
+          title: App Health
+          condition: C
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 43200
+                to: 0
+              datasourceUid: PBFA97CFB590B2093
+              model:
+                adhocFilters: []
+                datasource:
+                    type: prometheus
+                    uid: PBFA97CFB590B2093
+                disableTextWrap: false
+                editorMode: code
+                exemplar: false
+                expr: health_overall
+                format: table
+                fullMetaSearch: false
+                includeNullMetadata: true
+                instant: false
+                interval: ""
+                intervalMs: 15000
+                legendFormat: __auto
+                maxDataPoints: 43200
+                range: true
+                refId: A
+                useBackend: false
+            - refId: B
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params: []
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - B
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: A
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: B
+                type: reduce
+            - refId: C
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 1
+                        type: lt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - C
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: B
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: C
+                type: threshold
+          dashboardUid: cdlsigpuwahogc
+          panelId: 19
+          noDataState: NoData
+          execErrState: Error
+          for: 2m
+          annotations:
+            __dashboardUid__: cdlsigpuwahogc
+            __panelId__: "19"
+          isPaused: false
+

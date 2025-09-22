@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 5,
+  "id": 10,
   "links": [],
   "panels": [
     {
@@ -60,7 +60,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 11,
+        "h": 15,
         "w": 7,
         "x": 0,
         "y": 1
@@ -81,7 +81,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "11.5.1",
       "targets": [
         {
           "datasource": {
@@ -331,7 +331,7 @@
         ]
       },
       "gridPos": {
-        "h": 11,
+        "h": 15,
         "w": 17,
         "x": 7,
         "y": 1
@@ -345,11 +345,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "multi",
           "sort": "desc"
         }
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "11.5.1",
       "targets": [
         {
           "datasource": {
@@ -503,7 +504,7 @@
         "h": 11,
         "w": 12,
         "x": 0,
-        "y": 12
+        "y": 16
       },
       "id": 10,
       "options": {
@@ -528,11 +529,12 @@
           "values": false
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "11.5.1",
       "targets": [
         {
           "disableTextWrap": false,
@@ -681,7 +683,7 @@
         "h": 11,
         "w": 12,
         "x": 12,
-        "y": 12
+        "y": 16
       },
       "id": 11,
       "options": {
@@ -706,11 +708,12 @@
           "values": false
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "11.5.1",
       "targets": [
         {
           "disableTextWrap": false,
@@ -757,7 +760,7 @@
         "h": 13,
         "w": 24,
         "x": 0,
-        "y": 23
+        "y": 27
       },
       "id": 2,
       "options": {
@@ -775,7 +778,7 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.4.0",
+      "pluginVersion": "11.5.1",
       "targets": [
         {
           "datasource": {
@@ -813,8 +816,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -826,7 +828,7 @@
         "h": 12,
         "w": 24,
         "x": 0,
-        "y": 36
+        "y": 40
       },
       "id": 1,
       "options": {
@@ -886,8 +888,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "red",
-                "value": null
+                "color": "red"
               },
               {
                 "color": "green",
@@ -907,7 +908,7 @@
         "h": 12,
         "w": 24,
         "x": 0,
-        "y": 48
+        "y": 52
       },
       "id": 3,
       "options": {
@@ -955,7 +956,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 60
+        "y": 64
       },
       "id": 6,
       "panels": [
@@ -1007,8 +1008,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
@@ -1275,8 +1275,7 @@
                 "mode": "absolute",
                 "steps": [
                   {
-                    "color": "green",
-                    "value": null
+                    "color": "green"
                   },
                   {
                     "color": "red",
