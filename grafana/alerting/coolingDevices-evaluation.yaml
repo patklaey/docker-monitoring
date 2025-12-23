@@ -1,0 +1,105 @@
+apiVersion: 1
+groups:
+    - orgId: 1
+      name: cooling-devices
+      folder: household-rules
+      interval: 5m
+      rules:
+        - uid: af6dq8api8npcb
+          title: Freezer Low Consumption
+          condition: min consumption reduit
+          data:
+            - refId: average consumption reduit
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: PBFA97CFB590B2093
+              model:
+                editorMode: code
+                expr: avg_over_time(shelly_plug_power_consumption_w{sensorName="Reduit-Wall"}[1h])
+                instant: true
+                intervalMs: 1000
+                legendFormat: __auto
+                maxDataPoints: 43200
+                range: false
+                refId: average consumption reduit
+            - refId: min consumption reduit
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 10
+                        type: lt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - C
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: average consumption reduit
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: min consumption reduit
+                type: threshold
+          noDataState: NoData
+          execErrState: Error
+          for: 10m
+          isPaused: false
+          notification_settings:
+            receiver: Pagerduty
+        - uid: ff6dqhm1s0cn4c
+          title: Fridge Low Consumption
+          condition: min consumption fridge
+          data:
+            - refId: average consumption fridge
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: PBFA97CFB590B2093
+              model:
+                editorMode: code
+                expr: avg_over_time(shelly_plug_power_consumption_w{sensorName="Kitchen-Fridge"}[1h])
+                instant: true
+                intervalMs: 1000
+                legendFormat: __auto
+                maxDataPoints: 43200
+                range: false
+                refId: average consumption fridge
+            - refId: min consumption fridge
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 1.4
+                        type: lt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - C
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: average consumption fridge
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: min consumption fridge
+                type: threshold
+          noDataState: NoData
+          execErrState: Error
+          for: 10m
+          isPaused: false
+          notification_settings:
+            receiver: Pagerduty

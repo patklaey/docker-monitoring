@@ -1,0 +1,11 @@
+apiVersion: 1
+contactPoints:
+    - orgId: 1
+      name: Pagerduty
+      receivers:
+        - uid: ef7rs8isaheyoe
+          type: pagerduty
+          settings:
+            integrationKey: ${PAGERDUTY_INTEGRATION_KEY} 
+            url: https://events.eu.pagerduty.com/v2/enqueue
+          disableResolveMessage: false
